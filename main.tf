@@ -23,6 +23,7 @@ resource "cloudflare_access_policy" "policy" {
 
       github {
         name = include.value.github.name
+        identity_provider_id = include.valid.github.identity_provider_id
       }
     }
   }
