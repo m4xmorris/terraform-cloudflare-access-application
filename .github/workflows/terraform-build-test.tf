@@ -24,6 +24,7 @@ module "terraform_cloudflare_access_application" {
       email = ["null@example.com"]
       github = {
         name = "Null"
+        identity_provider_id = "null"
       }
     }
   ]
