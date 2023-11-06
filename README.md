@@ -1,8 +1,8 @@
-# terraform-PROVIDER-MODULE
+# terraform-cloudflare-access-application
 
-[Terraform](https://www.terraform.io) module for something.
+[Terraform](https://www.terraform.io) module for deploying an application to [Cloudflare Access](https://www.cloudflare.com/en-gb/zero-trust/products/access/).
 
-### [Dependencies-UPDATEME!](https://registry.terraform.io/modules/m4xmorris/MODULE/PROVIDER/latest?tab=dependencies)
+### [Dependencies-UPDATEME!](https://registry.terraform.io/modules/m4xmorris/access-application/cloudflare/latest?tab=dependencies)
 
 ## Usage:
 Create a `.tf` file inside your root module to call this module and set variables.
