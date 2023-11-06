@@ -22,7 +22,7 @@ resource "cloudflare_access_policy" "policy" {
       email = include.value.email
 
       github {
-        name                 = include.value.github.name
+        name = include.value.github.name
       }
     }
   }

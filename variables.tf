@@ -1,10 +1,10 @@
 variable "name" {
-  type = string
+  type        = string
   description = "Name of the application"
 }
 
 variable "logo" {
-  type = string
+  type        = string
   description = "Image URL to show in App Launcher"
   validation {
     condition     = can(regex("^https?://.*", var.logo))
@@ -13,7 +13,7 @@ variable "logo" {
 }
 
 variable "domain" {
-  type = string
+  type        = string
   description = "FQDN for the application"
   validation {
     condition     = can(regex("^[a-zA-Z0-9.-]+$", var.domain))
@@ -22,27 +22,27 @@ variable "domain" {
 }
 
 variable "type" {
-  type = string
+  type        = string
   description = "Type of application"
-  default = "self_hosted"
+  default     = "self_hosted"
 }
 
 variable "allowed_idps" {
-  type = list(string)
+  type        = list(string)
   description = "List of allowed identity providers"
 }
 
 variable "app_launcher_visible" {
-  type = bool
+  type        = bool
   description = "Whether the application is visible in the App Launcher"
-  default = true
+  default     = true
 }
 
 variable "session_duration" {
-  type = string
+  type        = string
   description = "Max duration of a session"
   validation {
-    condition = can(regex("^[0-9]+h([0-9]+m)?$", var.session_duration))
+    condition     = can(regex("^[0-9]+h([0-9]+m)?$", var.session_duration))
     error_message = "Time must be in the format '48h' or '2h45m'"
   }
   default = "12h"
