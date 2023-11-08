@@ -25,6 +25,7 @@ module "terraform_cloudflare_access_application" {
       github = {
         name = "Null"
         identity_provider_id = "null"
+        teams = ["Admins"]
       }
     }
   ]
