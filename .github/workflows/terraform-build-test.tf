@@ -22,5 +22,5 @@ module "terraform_cloudflare_access_application" {
   github_idp            = "null"
   github_org            = "Null"
   github_teams          = ["Null"]
-  allowed_emails        = [""]
+  allowed_emails        = []
 }
