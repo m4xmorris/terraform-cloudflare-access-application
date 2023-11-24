@@ -66,21 +66,21 @@ variable "cloudflare_zone_id" {
 }
 
 variable "github_idp" {
-  type = string
+  type        = string
   description = "GitHub IDP ID to use"
 }
 
 variable "github_org" {
-  type = string
+  type        = string
   description = "GitHub organization to use"
 }
 
 variable "github_teams" {
-  type = list(string)
+  type        = list(string)
   description = "List of GitHub Teams to allow"
 }
 
 variable "allowed_emails" {
-  type = list(string)
+  type        = list(string)
   description = "List of email addresses permitted to login via OTP"
 }

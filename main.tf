@@ -23,7 +23,7 @@ resource "cloudflare_access_policy" "policy" {
     github {
       name                 = var.github_org
       identity_provider_id = var.github_idp
-      teams = var.github_teams
+      teams                = var.github_teams
     }
   }
 }
