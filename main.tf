@@ -17,7 +17,7 @@ resource "cloudflare_access_policy" "policy" {
   precedence     = "1"
   decision       = "allow"
   dynamic "include" {
-    for_each = var.allowed_emails
+    for_each = length(var.allowed_emails) > 0 ? [1] : []
     content {
       email = [include.value]
     }
