@@ -19,13 +19,8 @@ module "terraform_cloudflare_access_application" {
   cloudflare_account_id = "null"
   cloudflare_token      = "nullnullnullnullnullnullnullnullnullnull"
   cloudflare_zone_id    = "null"
-  allow_conditions = [
-    {
-      email = ["null@example.com"]
-      github = {
-        name = "Null"
-        identity_provider_id = "null"
-      }
-    }
-  ]
+  github_idp            = "null"
+  github_org            = "Null"
+  github_teams          = ["Null"]
+  allowed_emails        = [""]
 }
