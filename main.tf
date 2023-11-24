@@ -16,16 +16,14 @@ resource "cloudflare_access_policy" "policy" {
   name           = "Allow Policy"
   precedence     = "1"
   decision       = "allow"
-  dynamic "include" {
-    for_each = var.allow_conditions
-    content {
-      email = include.value.email
-
-      github {
-        name                 = include.value.github.name
-        identity_provider_id = include.value.github.identity_provider_id
-        teams                = include.value.github.teams
-      }
+  include {
+    email = var.allowed_emails
+  }
+  include {
+    github {
+      name                 = var.github_org
+      identity_provider_id = var.github_idp
+      teams = var.github_teams
     }
   }
 }
