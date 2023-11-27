@@ -25,6 +25,7 @@ resource "cloudflare_access_policy" "github_policy" {
       teams                = var.github_teams
     }
   }
+  count = length(var.device_policy_rules) == 0 ? 1 : 0
 }
 
 resource "cloudflare_access_policy" "email_policy" {
@@ -45,7 +46,7 @@ resource "cloudflare_access_policy" "device_policy" {
   application_id                 = cloudflare_access_application.application.id
   zone_id                        = var.cloudflare_zone_id
   name                           = "${var.name} Device Policy"
-  precedence                     = "10"
+  precedence                     = "1"
   decision                       = "allow"
   purpose_justification_required = var.purpose_justification_required
   purpose_justification_prompt   = var.purpose_justification_required ? var.purpose_justification_prompt : null
