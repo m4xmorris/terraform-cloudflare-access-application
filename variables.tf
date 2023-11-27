@@ -77,27 +77,30 @@ variable "github_org" {
 
 variable "github_teams" {
   type        = list(string)
+  default = []
   description = "List of GitHub Teams to allow"
 }
 
 variable "allowed_emails" {
   type        = list(string)
+  default = []
   description = "List of email addresses permitted to login via OTP"
-}
-
-variable "device_policy_mode" {
-  type        = string
-  description = "Decision mode for the WARP/device policy"
-  default     = "disabled"
-
-  validation {
-    condition     = can(regex("^allow$|^deny$|^non_identity$|^bypass$|^disabled$", var.device_policy_mode))
-    error_message = "Invalid value for device_policy_mode. Must be one of allow, deny, non_identity, bypass, or disabled."
-  }
 }
 
 variable "device_policy_rules" {
   type        = list(string)
   default     = []
   description = "List of WARP/device posture rule IDs to check for the device policy"
+}
+
+variable "purpose_justification_required" {
+  type = bool
+  default = false
+  description = "Whether user must provide a justification for accessing the application"
+}
+
+variable "purpose_justification_prompt" {
+  type = string
+  default = "Access to this application requires a justification/reason to be provided to your administrator."
+  description = "Prompt to display when prompting for access justification"
 }
