@@ -20,8 +20,8 @@ resource "cloudflare_access_policy" "github_policy" {
   purpose_justification_prompt   = var.purpose_justification_required ? var.purpose_justification_prompt : null
   include {
     github {
-      name                 = var.github_org
       identity_provider_id = var.github_idp
+      name                 = var.github_org
       teams                = var.github_teams
     }
   }
@@ -52,8 +52,9 @@ resource "cloudflare_access_policy" "device_policy" {
   purpose_justification_prompt   = var.purpose_justification_required ? var.purpose_justification_prompt : null
   include {
     github {
-      name                 = var.github_org
       identity_provider_id = var.github_idp
+      name                 = var.github_org
+      teams                = var.github_teams
     }
   }
   require {
