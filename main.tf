@@ -17,7 +17,7 @@ resource "cloudflare_access_policy" "github_policy" {
   precedence     = "1"
   decision       = "allow"
   purpose_justification_required = var.purpose_justification_required
-  purpose_justification_prompt = var.purpose_justification_prompt
+  purpose_justification_prompt = var.purpose_justification_required ? var.purpose_justification_prompt : null
   include {
     github {
       name                 = var.github_org
@@ -33,6 +33,8 @@ resource "cloudflare_access_policy" "email_policy" {
   name           = "${var.name} Email Policy"
   precedence     = "2"
   decision       = "allow"
+  purpose_justification_required = var.purpose_justification_required
+  purpose_justification_prompt = var.purpose_justification_required ? var.purpose_justification_prompt : null
   include {
     email = var.allowed_emails
   }
@@ -45,6 +47,8 @@ resource "cloudflare_access_policy" "device_policy" {
   name           = "${var.name} Device Policy"
   precedence     = "10"
   decision       = "allow"
+  purpose_justification_required = var.purpose_justification_required
+  purpose_justification_prompt = var.purpose_justification_required ? var.purpose_justification_prompt : null
   include {
     github {
       name                 = var.github_org
