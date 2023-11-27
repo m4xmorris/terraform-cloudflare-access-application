@@ -77,13 +77,13 @@ variable "github_org" {
 
 variable "github_teams" {
   type        = list(string)
-  default = []
+  default     = []
   description = "List of GitHub Teams to allow"
 }
 
 variable "allowed_emails" {
   type        = list(string)
-  default = []
+  default     = []
   description = "List of email addresses permitted to login via OTP"
 }
 
@@ -94,13 +94,13 @@ variable "device_policy_rules" {
 }
 
 variable "purpose_justification_required" {
-  type = bool
-  default = false
+  type        = bool
+  default     = false
   description = "Whether user must provide a justification for accessing the application"
 }
 
 variable "purpose_justification_prompt" {
-  type = string
-  default = "Access to this application requires a justification/reason to be provided to your administrator."
+  type        = string
+  default     = "Access to this application requires a justification/reason to be provided to your administrator."
   description = "Prompt to display when prompting for access justification"
 }
