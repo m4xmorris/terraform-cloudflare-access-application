@@ -36,3 +36,15 @@ resource "cloudflare_access_policy" "email_policy" {
   }
   count = length(var.allowed_emails) == 0 ? 0 : 1
 }
+
+resource "cloudflare_access_policy" "device_policy" {
+  application_id = cloudflare_access_application.application.id
+  zone_id        = var.cloudflare_zone_id
+  name           = "${var.name} Device Policy"
+  precedence     = "10"
+  decision       = var.device_policy_mode
+  include {
+    device_posture = var.device_policy_rules
+  }
+  count = var.device_policy_mode != "disabled" ? 1 : 0
+}
