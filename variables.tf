@@ -87,10 +87,28 @@ variable "allowed_emails" {
   description = "List of email addresses permitted to login via OTP"
 }
 
-variable "device_policy_rules" {
+variable "device_policy_rules_windows" {
   type        = list(string)
   default     = []
-  description = "List of WARP/device posture rule IDs to check for the device policy"
+  description = "List of WARP/device posture rule IDs to check for Windows"
+}
+
+variable "device_policy_rules_macos" {
+  type        = list(string)
+  default     = []
+  description = "List of WARP/device posture rule IDs to check for macOS"
+}
+
+variable "device_policy_rules_ios" {
+  type        = list(string)
+  default     = []
+  description = "List of WARP/device posture rule IDs to check for iOS"
+}
+
+variable "device_policy_rules_android" {
+  type        = list(string)
+  default     = []
+  description = "List of WARP/device posture rule IDs to check for Android"
 }
 
 variable "purpose_justification_required" {
