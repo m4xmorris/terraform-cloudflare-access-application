@@ -124,7 +124,7 @@ variable "purpose_justification_prompt" {
 }
 
 variable "gateway_device_rule_id" {
-  type = string
-  default = "null"
+  type        = string
+  default     = "null"
   description = "ID of a Gateway device rule to add a \"Service Auth\" policy that skips login page for Gateway/WARP users"
 }

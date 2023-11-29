@@ -101,15 +101,15 @@ resource "cloudflare_access_policy" "device_policy_android" {
 }
 
 resource "cloudflare_access_policy" "gateway_policy" {
-  application_id                 = cloudflare_access_application.application.id
-  zone_id                        = var.cloudflare_zone_id
-  name                           = "${var.name} Gateway Policy"
-  precedence                     = "5"
-  decision                       = "non_identity"
+  application_id = cloudflare_access_application.application.id
+  zone_id        = var.cloudflare_zone_id
+  name           = "${var.name} Gateway Policy"
+  precedence     = "5"
+  decision       = "non_identity"
   include {
     device_posture = [var.gateway_device_rule_id]
   }
-  count                          = var.gateway_device_rule_id != "null" ? 1 : 0
+  count = var.gateway_device_rule_id != "null" ? 1 : 0
 }
 
 resource "cloudflare_access_policy" "email_policy" {
