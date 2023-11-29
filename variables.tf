@@ -122,3 +122,9 @@ variable "purpose_justification_prompt" {
   default     = "Access to this application requires a justification/reason to be provided to your administrator."
   description = "Prompt to display when prompting for access justification"
 }
+
+variable "gateway_device_rule_id" {
+  type        = string
+  default     = "null"
+  description = "ID of a Gateway device rule to add a \"Service Auth\" policy that skips login page for Gateway/WARP users"
+}
