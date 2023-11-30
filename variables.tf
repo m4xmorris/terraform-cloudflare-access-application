@@ -66,9 +66,9 @@ variable "cloudflare_zone_id" {
 }
 
 variable "enable_managed_policy" {
-  type = bool
+  type        = bool
   description = "Enable/Disable the managed GitHub and email policies (if disabled ensure you create your own policies!)"
-  default = true
+  default     = true
 }
 
 variable "github_idp" {
@@ -89,5 +89,5 @@ variable "github_teams" {
 variable "allowed_emails" {
   type        = list(string)
   description = "List of email addresses permitted to login via OTP"
-  default = []
+  default     = []
 }

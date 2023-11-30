@@ -32,6 +32,6 @@ resource "cloudflare_access_policy" "email_policy" {
   name           = "${var.name} Email Policy"
   precedence     = "2"
   decision       = "allow"
-  include {email = var.allowed_emails}
+  include { email = var.allowed_emails }
   count = length(var.allowed_emails) > 0 && var.enable_managed_policy ? 1 : 0
 }
