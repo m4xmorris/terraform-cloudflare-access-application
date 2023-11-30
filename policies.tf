@@ -21,15 +21,11 @@ resource "cloudflare_access_policy" "device_policy_windows" {
   zone_id                        = var.cloudflare_zone_id
   name                           = "${var.name} Device Policy (Windows)"
   precedence                     = "1"
-  decision                       = "allow"
+  decision       = "non_identity"
   purpose_justification_required = var.purpose_justification_required
   purpose_justification_prompt   = var.purpose_justification_required ? var.purpose_justification_prompt : null
   include {
-    github {
-      identity_provider_id = var.github_idp
-      name                 = var.github_org
-      teams                = var.github_teams
-    }
+    device_posture = [var.gateway_device_rule_id]
   }
   require {
     device_posture = var.device_policy_rules_windows
@@ -42,15 +38,11 @@ resource "cloudflare_access_policy" "device_policy_macos" {
   zone_id                        = var.cloudflare_zone_id
   name                           = "${var.name} Device Policy (macOS)"
   precedence                     = "2"
-  decision                       = "allow"
+  decision       = "non_identity"
   purpose_justification_required = var.purpose_justification_required
   purpose_justification_prompt   = var.purpose_justification_required ? var.purpose_justification_prompt : null
   include {
-    github {
-      identity_provider_id = var.github_idp
-      name                 = var.github_org
-      teams                = var.github_teams
-    }
+    device_posture = [var.gateway_device_rule_id]
   }
   require {
     device_posture = var.device_policy_rules_macos
@@ -63,15 +55,11 @@ resource "cloudflare_access_policy" "device_policy_ios" {
   zone_id                        = var.cloudflare_zone_id
   name                           = "${var.name} Device Policy (iOS)"
   precedence                     = "3"
-  decision                       = "allow"
+  decision       = "non_identity"
   purpose_justification_required = var.purpose_justification_required
   purpose_justification_prompt   = var.purpose_justification_required ? var.purpose_justification_prompt : null
   include {
-    github {
-      identity_provider_id = var.github_idp
-      name                 = var.github_org
-      teams                = var.github_teams
-    }
+    device_posture = [var.gateway_device_rule_id]
   }
   require {
     device_posture = var.device_policy_rules_ios
@@ -84,39 +72,23 @@ resource "cloudflare_access_policy" "device_policy_android" {
   zone_id                        = var.cloudflare_zone_id
   name                           = "${var.name} Device Policy (Android)"
   precedence                     = "4"
-  decision                       = "allow"
+  decision       = "non_identity"
   purpose_justification_required = var.purpose_justification_required
   purpose_justification_prompt   = var.purpose_justification_required ? var.purpose_justification_prompt : null
   include {
-    github {
-      identity_provider_id = var.github_idp
-      name                 = var.github_org
-      teams                = var.github_teams
-    }
-  }
-  require {
-    device_posture = var.device_policy_rules_android
-  }
-  count = length(var.device_policy_rules_android) == 0 ? 0 : 1
-}
-
-resource "cloudflare_access_policy" "gateway_policy" {
-  application_id = cloudflare_access_application.application.id
-  zone_id        = var.cloudflare_zone_id
-  name           = "${var.name} Gateway Policy"
-  precedence     = "5"
-  decision       = "non_identity"
-  include {
     device_posture = [var.gateway_device_rule_id]
   }
-  count = var.gateway_device_rule_id != "null" ? 1 : 0
+  require {
+    device_posture = var.device_policy_rules_windows
+  }
+  count = length(var.device_policy_rules_windows) == 0 ? 0 : 1
 }
 
 resource "cloudflare_access_policy" "email_policy" {
   application_id                 = cloudflare_access_application.application.id
   zone_id                        = var.cloudflare_zone_id
   name                           = "${var.name} Email Policy"
-  precedence                     = "6"
+  precedence                     = "5"
   decision                       = "allow"
   purpose_justification_required = var.purpose_justification_required
   purpose_justification_prompt   = var.purpose_justification_required ? var.purpose_justification_prompt : null
