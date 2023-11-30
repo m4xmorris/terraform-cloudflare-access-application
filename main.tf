@@ -23,6 +23,7 @@ resource "cloudflare_access_policy" "github_policy" {
       teams                = var.github_teams
     }
   }
+  count = var.enable_managed_policy ? 1 : 0
 }
 
 resource "cloudflare_access_policy" "email_policy" {
@@ -31,8 +32,6 @@ resource "cloudflare_access_policy" "email_policy" {
   name           = "${var.name} Email Policy"
   precedence     = "2"
   decision       = "allow"
-  include {
-    email = var.allowed_emails
-  }
-  count = length(var.allowed_emails) == 0 ? 0 : 1
+  include {email = var.allowed_emails}
+  count = length(var.allowed_emails) > 0 && var.enable_managed_policy ? 1 : 0
 }
