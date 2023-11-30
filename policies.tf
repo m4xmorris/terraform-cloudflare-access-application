@@ -21,7 +21,7 @@ resource "cloudflare_access_policy" "device_policy_windows" {
   zone_id                        = var.cloudflare_zone_id
   name                           = "${var.name} Device Policy (Windows)"
   precedence                     = "1"
-  decision       = "non_identity"
+  decision                       = "non_identity"
   purpose_justification_required = var.purpose_justification_required
   purpose_justification_prompt   = var.purpose_justification_required ? var.purpose_justification_prompt : null
   include {
@@ -38,7 +38,7 @@ resource "cloudflare_access_policy" "device_policy_macos" {
   zone_id                        = var.cloudflare_zone_id
   name                           = "${var.name} Device Policy (macOS)"
   precedence                     = "2"
-  decision       = "non_identity"
+  decision                       = "non_identity"
   purpose_justification_required = var.purpose_justification_required
   purpose_justification_prompt   = var.purpose_justification_required ? var.purpose_justification_prompt : null
   include {
@@ -55,7 +55,7 @@ resource "cloudflare_access_policy" "device_policy_ios" {
   zone_id                        = var.cloudflare_zone_id
   name                           = "${var.name} Device Policy (iOS)"
   precedence                     = "3"
-  decision       = "non_identity"
+  decision                       = "non_identity"
   purpose_justification_required = var.purpose_justification_required
   purpose_justification_prompt   = var.purpose_justification_required ? var.purpose_justification_prompt : null
   include {
@@ -72,7 +72,7 @@ resource "cloudflare_access_policy" "device_policy_android" {
   zone_id                        = var.cloudflare_zone_id
   name                           = "${var.name} Device Policy (Android)"
   precedence                     = "4"
-  decision       = "non_identity"
+  decision                       = "non_identity"
   purpose_justification_required = var.purpose_justification_required
   purpose_justification_prompt   = var.purpose_justification_required ? var.purpose_justification_prompt : null
   include {
