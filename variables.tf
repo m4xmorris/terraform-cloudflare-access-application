@@ -74,16 +74,19 @@ variable "enable_managed_policy" {
 variable "github_idp" {
   type        = string
   description = "GitHub IDP ID to use"
+  default     = "null"
 }
 
 variable "github_org" {
   type        = string
   description = "GitHub organization to use"
+  default     = "null"
 }
 
 variable "github_teams" {
   type        = list(string)
   description = "List of GitHub Teams to allow"
+  default     = []
 }
 
 variable "allowed_emails" {
